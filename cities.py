@@ -14,12 +14,13 @@ def generate_cities(n):
 
 
 
-#def distance(city1, city2, cities): 
- #   int distance 
-    
+def distance(city1, city2, cities): 
+    x1, y1 = cities[city1]
+    x2, y2 = cities[city2]
+
+    result = ((x2 - x1 )**2 + (y2 - y1 )**2) ** 0.5
+
+    return result
 
 
-cities = generate_cities(10)
-print(cities)
-    
-    
+
