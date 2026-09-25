@@ -16,7 +16,7 @@ def crossover(parent1, parent2):
         child.append(parent1[i])
 
 
-    #for every index in parent 2 that does not exist in parent 1, add it to child
+    #for every index in parent 2 that does not already exist in child, add to parent 1
     for element in parent2:
         if element not in child:
             child.append(element)
@@ -38,16 +38,16 @@ import random
 length = len(parent1)
 
 #if start = 6 it chooses a random number between 0 and 4 as the start index 
-start = random.randit(0, length - 2)
+start = random.randint(0, length - 2)
 
 #if start is 2 the end is between 3 and 5 for the end index 
-end = random.randit(start + 1, length - 1)
+end = random.randint(start + 1, length - 1)
 
 #for every index from start to end is added to child 
     for i in range(start, end):
         child.append(parent1[i])
 
-#for every index in parent 2 that does not exist in parent 1, add it to child
+#for every index in parent 2 that does not already exist in child add to parent 1
     for element in parent2:
         if element not in child:
             child.append(element)
