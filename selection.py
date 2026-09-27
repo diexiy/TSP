@@ -1,10 +1,10 @@
 import random
 
-from population import fake_calculate_route_distance, fake_population, fake_cities
+from routes import calculate_route_distance
 
 
 def fitness(route, cities):
-    distance = fake_calculate_route_distance(route, cities)
+    distance = calculate_route_distance(route, cities)
     return 1 / distance
 
 
@@ -23,9 +23,3 @@ def select_parent(population, cities):
 
     return parent
 
-parent = select_parent(fake_population, fake_cities)
-
-print("Selected parent:", parent)
-
-
-print("Distance:", fake_calculate_route_distance(parent, fake_cities))
