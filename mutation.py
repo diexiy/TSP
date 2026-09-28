@@ -18,15 +18,14 @@ def mutation(route, mutation_rate):
 route =["A", "B", "C", "D"]
 new_route = mutation(route, 0.05)
 
-print("Original:", route)
-print("New:", new_route)
+print(new_route)
 
 
 #mutation(route, 0.05)
 
 
 '''
-#change if statment to take random indexen to mutate
+#change if statment to take random index to mutate
 if random.random() < mutation_rate:
     i = random.randint(0, len(new_route) - 1)
     j = random.randint(0, len(new_route) - 1)
