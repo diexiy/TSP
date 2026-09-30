@@ -5,8 +5,8 @@ def generate_cities(n):
 
     for i in range(n):
         letter = chr(65 + i) # A = letter 65 och chr() är en inbyggd Python-funktion som tar ett heltal och tolkar det som en Unicode-kodpunkt
-        x_coordinate = random.randint(0, 100)
-        y_coordinate = random.randint(0, 100)
+        x_coordinate = random.randint(0, 1000)
+        y_coordinate = random.randint(0, 1000)
 
 
         cities[letter] = (x_coordinate, y_coordinate)

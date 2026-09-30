@@ -5,7 +5,8 @@ from routes import calculate_route_distance
 
 def fitness(route, cities):
     distance = calculate_route_distance(route, cities)
-    return 1 / distance
+    fitness = 1/ distance
+    return fitness
 
 
 def select_parent(population, cities):

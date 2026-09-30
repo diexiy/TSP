@@ -1,7 +1,8 @@
 import random
 
 def mutation(route, mutation_rate):
-    #copies the route 
+    #copies the route so we can modify it and mutate a new route
+    #we need to make a copy to make sure the parent population stays the same
     new_route = route.copy()
     #takes a random number between 0 and 1
     #checks if that number is less than mutation rate
@@ -21,14 +22,15 @@ new_route = mutation(route, 0.05)
 print(new_route)
 
 
-#mutation(route, 0.05)
+def mutationRandom(route, mutation_rate):
+    #copies the route 
+    new_route = route.copy()
+    #change if statment to take random index to mutate
+    if random.random() < mutation_rate:
+        i = random.randint(0, len(new_route) - 1)
+        j = random.randint(0, len(new_route) - 1)
+        new_route[i], new_route[j] = new_route[j], new_route[i]
+    return new_route
 
-
-'''
-#change if statment to take random index to mutate
-if random.random() < mutation_rate:
-    i = random.randint(0, len(new_route) - 1)
-    j = random.randint(0, len(new_route) - 1)
-    new_route[i], new_route[j] = new_route[j], new_route[i]
-'''
-
+new_route = mutationRandom(route, 0.05)
+print(new_route)

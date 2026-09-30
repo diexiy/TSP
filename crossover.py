@@ -1,3 +1,4 @@
+import random
 
 def crossover(parent1, parent2):
 
@@ -24,11 +25,13 @@ def crossover(parent1, parent2):
             child.append(element)
 
     #check that child has the same length as parent1
-    print(len(child) == len(parent1))
+    if len(child) != len(parent1):
+        print("Error, child does not have the same length as parent1")
     #check that child does not have duplicate items
-    print(set(child) == set(parent1))
-
-    print(child)
+    elif(set(child) != set(parent1)):
+        print("Error, child has duplicate items as parent1")
+    else:
+        print(child)
 
 
 parent1 = ["A", "B", "C", "D", "E", "F"]
@@ -39,9 +42,7 @@ parent1 = ["A", "B", "C", "D", "E", "F", "G", "H"]
 parent2 = ["D", "H", "F", "A", "E", "G", "C", "B"]
 '''
 
-'''
-import random
-def crossover(parent1, parent2):
+def crossoverRandom(parent1, parent2):
 
     length = len(parent1)
 
@@ -62,10 +63,15 @@ def crossover(parent1, parent2):
         if element not in child:
             child.append(element)
 
+    #check that child has the same length as parent1
+    if len(child) != len(parent1):
+        print("Error, child does not have the same length as parent1")
+    #check that child does not have duplicate items
+    elif(set(child) != set(parent1)):
+        print("Error, child has duplicate items as parent1")
+    else:
+        print(" ")
     print(child)
+crossoverRandom(parent1, parent2)
 
-parent1 = ["A", "B", "C", "D", "E", "F"]
-parent2 = ["D", "F", "A", "E", "C", "B"]
-crossover(parent1, parent2)
-'''
 
