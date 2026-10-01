@@ -1,31 +1,48 @@
 import random
 
-from crossover import crossover
-from mutation import mutation
+from cities import generate_cities
+from population import generate_population, get_best_route
+from selection import select_parent
+from routes import calculate_route_distance
+from plotter import plot_route
 
-print("Testing crossover and mutation with real functions\n")
-
+# Gör slumpen reproducerbar med ett bestömt startläge för slumpen
 random.seed(42)
 
-parent1 = ["A", "B", "C", "D", "E", "F"]
-parent2 = ["D", "F", "A", "E", "C", "B"]
-route = ["A", "B", "C", "D"]
+# Skapa städer
+cities = generate_cities(10)
 
-print("Parent 1:", parent1)
-print("Parent 2:", parent2)
-print("\nCrossover result:")
-crossover(parent1, parent2)
+# Skapa population
+population = generate_population(cities, 5)
 
-print("\nRoute before mutation:", route)
-print("Mutation with rate 0.0:", mutation(route, 0.0))
-print("Mutation with rate 1.0:", mutation(route, 1.0))
+print("Population:")
+for route in population:
+    print(route)
 
-no_mutation = mutation(route, 0.0)
-mutated_route = mutation(route, 1.0)
+# Välj två föräldrar
+parent1 = select_parent(population, cities)
+parent2 = select_parent(population, cities)
 
-assert len(no_mutation) == len(route)
-assert set(no_mutation) == set(route)
-assert len(mutated_route) == len(route)
-assert set(mutated_route) == set(route)
+print("\nParent 1:")
+print(parent1)
 
-print("\nMutation checks passed.")
+print("\nParent 2:")
+print(parent2)
+
+# Visa deras distanser
+print("\nParent 1 distance:")
+print(calculate_route_distance(parent1, cities))
+
+print("\nParent 2 distance:")
+print(calculate_route_distance(parent2, cities))
+
+# Visa bästa routen också
+best_route = get_best_route(population, cities)
+
+print("\nBest route:")
+print(best_route)
+
+print("\nBest route distance:")
+print(calculate_route_distance(best_route, cities))
+
+plot_route(cities, best_route)

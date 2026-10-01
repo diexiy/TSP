@@ -15,12 +15,12 @@ def mutation(route, mutation_rate):
 
 
 
-
+'''
 route =["A", "B", "C", "D"]
 new_route = mutation(route, 0.05)
 
 print(new_route)
-
+'''
 
 def mutationRandom(route, mutation_rate):
     #copies the route 
@@ -31,6 +31,7 @@ def mutationRandom(route, mutation_rate):
         j = random.randint(0, len(new_route) - 1)
         new_route[i], new_route[j] = new_route[j], new_route[i]
     return new_route
-
+'''
 new_route = mutationRandom(route, 0.05)
 print(new_route)
+'''

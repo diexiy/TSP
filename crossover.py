@@ -1,4 +1,5 @@
 import random
+from selection import select_parent
 
 def crossover(parent1, parent2):
 
@@ -31,12 +32,13 @@ def crossover(parent1, parent2):
     elif(set(child) != set(parent1)):
         print("Error, child has duplicate items as parent1")
     else:
-        print(child)
+        print("Child:", child)
 
-
+'''
 parent1 = ["A", "B", "C", "D", "E", "F"]
 parent2 = ["D", "F", "A", "E", "C", "B"]
 crossover(parent1, parent2)
+'''
 '''
 parent1 = ["A", "B", "C", "D", "E", "F", "G", "H"]
 parent2 = ["D", "H", "F", "A", "E", "G", "C", "B"]
@@ -72,6 +74,6 @@ def crossoverRandom(parent1, parent2):
     else:
         print(" ")
     print(child)
-crossoverRandom(parent1, parent2)
+
 
 
