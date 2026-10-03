@@ -9,7 +9,7 @@ def fitness(route, cities):
     return fitness
 
 
-def select_parent(population, cities):
+def select_parent_wheel(population, cities):
     fitness_values = []
 
     for route in population:
@@ -22,5 +22,26 @@ def select_parent(population, cities):
         k=1
     )[0]
 
+    return parent
+
+
+def select_parent_tournament(population, cities):
+    candidates = random.sample(population, 4)
+
+    best_parent = candidates[0]
+    best_distance = calculate_route_distance(best_parent, cities)
+
+    for route in candidates:
+        current_distance = calculate_route_distance(route, cities)
+
+        if current_distance < best_distance:
+            best_parent = route
+            best_distance = current_distance
+
+    return best_parent
+
+
+def select_parent_random(population):
+    parent = random.choice(population)
     return parent
 
