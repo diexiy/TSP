@@ -25,8 +25,24 @@ def select_parent_wheel(population, cities):
     return parent
 
 
+def select_survivors(population, cities, survivor_count):
+    candidates = population.copy()
+    survivors = []
+
+    while len(survivors) < survivor_count:
+        fitness_values = [fitness(route, cities) for route in candidates]
+        selected_index = random.choices(
+            range(len(candidates)),
+            weights=fitness_values,
+            k=1
+        )[0]
+        survivors.append(candidates.pop(selected_index))
+
+    return survivors
+
+
 def select_parent_tournament(population, cities):
-    candidates = random.sample(population, 4)
+    candidates = random.sample(population, 10)
 
     best_parent = candidates[0]
     best_distance = calculate_route_distance(best_parent, cities)

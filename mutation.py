@@ -27,8 +27,8 @@ def mutationRandom(route, mutation_rate):
     new_route = route.copy()
     #change if statment to take random index to mutate
     if random.random() < mutation_rate:
-        i = random.randint(0, len(new_route) - 1)
-        j = random.randint(0, len(new_route) - 1)
+        i = random.randint(1, len(new_route) - 1)
+        j = random.randint(1, len(new_route) - 1)
         new_route[i], new_route[j] = new_route[j], new_route[i]
     return new_route
 '''

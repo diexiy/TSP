@@ -6,10 +6,10 @@ from plotter import plot_route
 from bruteforce import brute_force_tsp
 
 # settings
-NUMBER_OF_CITIES = 100
+NUMBER_OF_CITIES = 50
 POPULATION_SIZE = 100
 GENERATIONS = 500
-MUTATION_RATE = 0.05
+MUTATION_RATE = 0.20
 
 random.seed(50)
 

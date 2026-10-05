@@ -1,4 +1,83 @@
 import matplotlib.pyplot as plt
+import csv
+import matplotlib.pyplot as plt
+
+
+
+def plot_results():
+
+    # Store the data for each run
+    runs = {}
+
+    # Read data file
+    with open("results.txt", "r") as file:
+
+        reader = csv.reader(file)
+
+        # Skip header
+        next(reader)
+
+        for row in reader:
+
+            label = row[0]
+            city = int(row[1])
+            average = float(row[2])
+            stdev = float(row[3])
+
+            # Create a new list for this run if it does not exist
+            if label not in runs:
+                runs[label] = {
+                    "cities": [],
+                    "average": [],
+                    "stdev": []
+                }
+
+            # Add the data to the correct run
+            runs[label]["cities"].append(city)
+            runs[label]["average"].append(average)
+            runs[label]["stdev"].append(stdev)
+
+
+    # Plot every run
+    for label in runs:
+
+        cities = runs[label]["cities"]
+        average = runs[label]["average"]
+        stdev = runs[label]["stdev"]
+
+        # Calculate standard deviation range
+        lower = []
+        upper = []
+
+        for i in range(len(average)):
+            lower.append(average[i] - stdev[i])
+            upper.append(average[i] + stdev[i])
+
+        # Plot average
+        plt.plot(
+            cities,
+            average,
+            marker="o",
+            label=label
+        )
+
+        # Shaded standard deviation
+        plt.fill_between(
+            cities,
+            lower,
+            upper,
+            alpha=0.2
+        )
+
+
+    plt.xlabel("Number of cities")
+    plt.ylabel("Route distance")
+    plt.title("TSP Performance vs Number of Cities")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
 
 
 def plot_route(cities, route):
@@ -60,3 +139,6 @@ def plot_route(cities, route):
 
     plt.tight_layout()
     plt.show()
+    
+if __name__ == "__main__":
+    plot_results()

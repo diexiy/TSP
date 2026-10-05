@@ -1,5 +1,5 @@
 import random
-from selection import select_parent
+from selection import select_parent_tournament
 
 def crossover(parent1, parent2):
 
@@ -40,7 +40,7 @@ def crossoverRandom(parent1, parent2):
     length = len(parent1)
 
     #if start = 6 it chooses a random number between 0 and 4 as the start index 
-    start = random.randint(0, length - 2)
+    start = random.randint(1, length - 2)
 
     #if start is 2 the end is between 3 and 5 for the end index 
     end = random.randint(start + 1, length - 1)
