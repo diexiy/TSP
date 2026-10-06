@@ -41,8 +41,8 @@ def select_survivors(population, cities, survivor_count):
     return survivors
 
 
-def select_parent_tournament(population, cities):
-    candidates = random.sample(population, 10)
+def select_parent_tournament(population, cities, tournament_size=10):
+    candidates = random.sample(population, tournament_size)
 
     best_parent = candidates[0]
     best_distance = calculate_route_distance(best_parent, cities)

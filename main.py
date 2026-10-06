@@ -1,27 +1,33 @@
+# Group members: Leyla Alsheikha, Maria Birtman, Alma Warin, Fadumo Jama
+# Runs the genetic algorithm for TSP with the final settings,
+# prints the result and plots the best route.
+
 import random
 
 from cities import generate_cities
 from evolution import run_evolution
 from plotter import plot_route
-from bruteforce import brute_force_tsp
 
 # settings
 NUMBER_OF_CITIES = 50
 POPULATION_SIZE = 100
-GENERATIONS = 500
-MUTATION_RATE = 0.20
+GENERATIONS = 300
+MUTATION_RATE = 0.5
+REPLACEMENT_RATE = 1.0     # 1.0 = no elitism, whole population is replaced
+TOURNAMENT_SIZE = 30
 
-random.seed(50)
-
+#random.seed(50)
+random.seed(1000 + NUMBER_OF_CITIES)
 cities = generate_cities(NUMBER_OF_CITIES)
-
 random.seed()
 
 best_route, best_distance, history = run_evolution(
     cities,
     POPULATION_SIZE,
     GENERATIONS,
-    MUTATION_RATE
+    mutation_rate=MUTATION_RATE,
+    replacement_rate=REPLACEMENT_RATE,
+    tournament_size=TOURNAMENT_SIZE,
 )
 
 with open("history.txt", "w") as file:
@@ -39,19 +45,3 @@ print("\nBest distance:")
 print(best_distance)
 
 plot_route(cities, best_route)
-
-'''
-optimal_route, optimal_distance = brute_force_tsp(cities)
-
-print("\n--- COMPARISON ---")
-print("GA distance:", best_distance)
-print("Optimal distance:", optimal_distance)
-
-difference = best_distance - optimal_distance
-percentage = (difference / optimal_distance) * 100
-
-print("Difference:", difference)
-print("GA is", percentage, "% above optimal")
-
-
-'''
