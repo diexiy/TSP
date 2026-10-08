@@ -21,13 +21,7 @@ random.seed(1000 + NUMBER_OF_CITIES)
 cities = generate_cities(NUMBER_OF_CITIES)
 random.seed()
 
-best_route, best_distance, history = run_evolution(
-    cities,
-    POPULATION_SIZE,
-    GENERATIONS,
-    mutation_rate=MUTATION_RATE,
-    replacement_rate=REPLACEMENT_RATE,
-    tournament_size=TOURNAMENT_SIZE,
+best_route, best_distance, history = run_evolution( cities, POPULATION_SIZE, GENERATIONS, mutation_rate=MUTATION_RATE, replacement_rate=REPLACEMENT_RATE, tournament_size=TOURNAMENT_SIZE,
 )
 
 with open("history.txt", "w") as file:

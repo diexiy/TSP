@@ -1,5 +1,3 @@
-# 
-#
 # Runs several settings of the genetic algorithm for TSP, saves all
 # results to a CSV file and draws three graphs:
 #   1. Route length vs number of cities

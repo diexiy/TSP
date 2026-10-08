@@ -45,7 +45,7 @@ def crossoverRandom(parent1, parent2):
     #if start is 2 the end is between 3 and 5 for the end index 
     end = random.randint(start + 1, length - 1)
 
-    child = []
+    child = [parent1[0]]
 
     #for every index from start to end is added to child 
     for i in range(start, end):

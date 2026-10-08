@@ -7,8 +7,6 @@ def generate_random_route(cities):
     remaining_cities = list(cities.keys())
     remaining_cities.remove(start_city)
 
-
-    
     random.shuffle(remaining_cities)
 
     route = [start_city] + remaining_cities

@@ -8,8 +8,8 @@ from selection import select_parent_tournament, select_survivors
 def run_generation(population, cities, mutation_rate=0.5, replacement_rate=1.0, tournament_size=30):
     if not 0 <= replacement_rate <= 1:
         raise ValueError("replacement_rate must be between 0 and 1")
-
-    survivor_count = round(len(population) * (1 - replacement_rate))
+                                #100                0.3
+    survivor_count = round(len(population) * (1 - replacement_rate)) #100 *(1-0.3)=70 ju lägre replecment rate vi har detso högre elitism vi har. 
     new_population = select_survivors(population, cities, survivor_count)
 
     while len(new_population) < len(population):

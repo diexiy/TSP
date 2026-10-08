@@ -5,7 +5,7 @@ from routes import calculate_route_distance
 
 def fitness(route, cities):
     distance = calculate_route_distance(route, cities)
-    fitness = 1/ distance
+    fitness = 1/ distance # High fitness= low distance, Low fitnees = high distance. 
     return fitness
 
 
@@ -16,11 +16,7 @@ def select_parent_wheel(population, cities):
         route_fitness = fitness(route, cities)
         fitness_values.append(route_fitness)
 
-    parent = random.choices(
-        population,
-        weights=fitness_values,
-        k=1
-    )[0]
+    parent = random.choices(population,weights=fitness_values,k=1)[0] # tar ut en element som är förlädrar utan en lista.
 
     return parent
 
